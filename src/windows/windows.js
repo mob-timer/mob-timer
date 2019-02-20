@@ -5,6 +5,10 @@ const path = require('path')
 
 let timerWindow, configWindow, fullscreenWindow
 let snapThreshold, secondsUntilFullscreen, timerAlwaysOnTop
+const timerWindowSize = {
+  width: 220,
+  height: 90
+}
 
 exports.createTimerWindow = () => {
   if (timerWindow) {
@@ -13,10 +17,10 @@ exports.createTimerWindow = () => {
 
   let { width, height } = electron.screen.getPrimaryDisplay().workAreaSize
   timerWindow = new electron.BrowserWindow({
-    x: width - 220,
-    y: height - 90,
-    width: 220,
-    height: 90,
+    x: width - timerWindowSize.width,
+    y: height - timerWindowSize.height,
+    width: timerWindowSize.width,
+    height: timerWindowSize.height,
     resizable: false,
     alwaysOnTop: timerAlwaysOnTop,
     frame: false,
@@ -43,7 +47,12 @@ exports.createTimerWindow = () => {
 
     let snapTo = windowSnapper(windowBounds, screenBounds, snapThreshold)
     if (snapTo.x !== windowBounds.x || snapTo.y !== windowBounds.y) {
-      timerWindow.setPosition(snapTo.x, snapTo.y)
+      timerWindow.setBounds({
+        width: timerWindowSize.width,
+        height: timerWindowSize.height,
+        x: snapTo.x,
+        y: snapTo.y
+      })
     }
   })
 }

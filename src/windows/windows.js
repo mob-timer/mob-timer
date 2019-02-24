@@ -2,6 +2,7 @@ const electron = require('electron')
 const { app } = electron
 const windowSnapper = require('./window-snapper')
 const path = require('path')
+const { debounce } = require('debounce')
 
 let timerWindow, configWindow, fullscreenWindow
 let snapThreshold, secondsUntilFullscreen, timerAlwaysOnTop
@@ -29,6 +30,7 @@ exports.createTimerWindow = () => {
 
   timerWindow.loadURL(`file://${__dirname}/timer/index.html`)
   timerWindow.on('closed', () => (timerWindow = null))
+  const delayedSetBounds = debounce(timerWindow.setBounds, 100)
 
   timerWindow.on('move', () => {
     if (snapThreshold <= 0) {
@@ -47,12 +49,14 @@ exports.createTimerWindow = () => {
 
     let snapTo = windowSnapper(windowBounds, screenBounds, snapThreshold)
     if (snapTo.x !== windowBounds.x || snapTo.y !== windowBounds.y) {
-      timerWindow.setBounds({
+      delayedSetBounds({
         width: timerWindowSize.width,
         height: timerWindowSize.height,
         x: snapTo.x,
         y: snapTo.y
       })
+    } else {
+      delayedSetBounds.clear()
     }
   })
 }

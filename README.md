@@ -11,8 +11,11 @@ Click the gear icon in the top right to configure the timer.
 Then click the large circle to start/stop the timer,
 or the smaller circle to skip to the next mobber.
 
+# Running the timer
 
-# Build the timer
+You can either build the timer from source or [download a pre-built version](https://github.com/mob-timer/mob-timer/releases).
+
+## Build mob-timer
 
 Run `npm install` and then one of the following commands for your respective operating system:
 - Windows: `npm run build-win`

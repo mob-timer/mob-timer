@@ -13,6 +13,7 @@ or the smaller circle to skip to the next mobber.
 
 
 # Build the timer
+
 Run `npm install` and then one of the following commands for your respective operating system:
 - Windows: `npm run build-win`
 - Mac OS X: `npm run build-mac`
@@ -23,24 +24,16 @@ If you need a platform other than these, you will need to modify the build scrip
 
 
 # Development
+
 Run `npm install` to get the dependencies, then `npm start` to run the timer.
 Run `npm test` to run the unit tests once, or alternatively `npm run watch` to run them on changes.
 
 
-# Motivation
-Pluralsight has a development team that does mob programming full-time,
-and a few other teams dabble in mobbing as well.
-We have tried and enjoyed a number of other mob timers, but we had various
-(mostly minor) gripes with them.
-So we decided to build one of our own.
+# Contributing
 
-We had a few goals:
+Feel free to open Issues and Pull Requests discussing additions to this project. You can also have a look at the [existing issues](https://github.com/mob-timer/mob-timer/issues). Keep the Pull Requests small and make sure the tests and code style checks pass.
 
-* Make a timer that is hard to ignore, but also not overly annoying
-* Implement escalating alerts
-* Customization
-* Have a timer that we can easily hack on, built with tech we know
-
+If you are uncertain, please reach out first (by opening an issue) before investing too much time. :)
 
 # License
 

@@ -2,18 +2,18 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/mob-timer/mob-timer.svg)](https://greenkeeper.io/)
 
-A cross-platform timer built on [Electron](http://electron.atom.io/)
+A cross-platform mob-timer built on [Electron](http://electron.atom.io/)
 for doing [Mob Programming](http://mobprogramming.org/). This is a fork from [pluralsight/mob-timer](https://github.com/pluralsight/mob-timer).
 
 ![Example Timer Image](timer-example.png)
 
-Click the gear icon in the top right to configure the timer.
-Then click the large circle to start/stop the timer,
+Click the gear icon in the top right to configure the mob-timer.
+Then click the large circle to start/stop the mob-timer,
 or the smaller circle to skip to the next mobber.
 
-# Running the timer
+# Running the mob-timer
 
-You can either build the timer from source or [download a pre-built version](https://github.com/mob-timer/mob-timer/releases).
+You can either build the mob-timer from source or [download a pre-built version](https://github.com/mob-timer/mob-timer/releases).
 
 ## Build mob-timer
 

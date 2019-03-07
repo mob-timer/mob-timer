@@ -1,9 +1,9 @@
-# Pluralsight Mob Timer
+# Mob Timer
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/mob-timer/mob-timer.svg)](https://greenkeeper.io/)
 
 A cross-platform timer built on [Electron](http://electron.atom.io/)
-for doing [Mob Programming](http://mobprogramming.org/)
+for doing [Mob Programming](http://mobprogramming.org/). This is a fork from [pluralsight/mob-timer](https://github.com/pluralsight/mob-timer).
 
 ![Example Timer Image](timer-example.png)
 
@@ -44,4 +44,4 @@ We had a few goals:
 
 # License
 
-The Pluralsight Mob Timer is licensed under the [Apache 2.0 license](LICENSE).
+The Mob Timer is licensed under the [Apache 2.0 license](LICENSE).

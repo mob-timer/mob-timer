@@ -38,6 +38,17 @@ Feel free to open Issues and Pull Requests discussing additions to this project.
 
 If you are uncertain, please reach out first (by opening an issue) before investing too much time. :)
 
+# Reasons for forking
+
+_This is a fork from [pluralsight/mob-timer](https://github.com/pluralsight/mob-timer), please have a look to see if that project is more suited to your needs!_ 🙂
+ 
+There are a few main reasons for this fork existing:
+
+- To build in CI and attach to release using [Travis CI](https://travis-ci.org/)
+- To stay up to date with dependencies using [Greenkeeper.io](https://greenkeeper.io/)
+- To move to code style and tooling suited for project, not needing to take internal company best practices into account
+- To have an independent organization where the mob-timer is the focus
+
 # License
 
 The Mob Timer is licensed under the [Apache 2.0 license](LICENSE).

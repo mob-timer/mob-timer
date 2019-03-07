@@ -5,6 +5,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/mob-timer/mob-timer.svg)](https://github.com/mob-timer/mob-timer/graphs/contributors)
 [![Travis (.org)](https://img.shields.io/travis/mob-timer/mob-timer/master.svg)](https://travis-ci.org/mob-timer/mob-timer/branches)
 ![GitHub All Releases](https://img.shields.io/github/downloads/mob-timer/mob-timer/total.svg)
+[![GitHub open idea issues](https://img.shields.io/github/issues-raw/mob-timer/mob-timer/idea.svg?color=blue)](https://github.com/mob-timer/mob-timer/issues?q=is%3Aissue+is%3Aopen+label%3Aidea)
 
 A cross-platform mob-timer built on [Electron](http://electron.atom.io/)
 for doing [Mob Programming](http://mobprogramming.org/). This is a fork from [pluralsight/mob-timer](https://github.com/pluralsight/mob-timer).

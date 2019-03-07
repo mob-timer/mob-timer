@@ -1,6 +1,6 @@
 # Mob Timer
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/mob-timer/mob-timer.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/mob-timer/mob-timer.svg)](https://greenkeeper.io/) [![License](https://img.shields.io/github/license/mob-timer/mob-timer.svg)](LICENSE)
 
 A cross-platform mob-timer built on [Electron](http://electron.atom.io/)
 for doing [Mob Programming](http://mobprogramming.org/). This is a fork from [pluralsight/mob-timer](https://github.com/pluralsight/mob-timer).

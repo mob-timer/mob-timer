@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pluralsight/mob-timer.git"
+    "url": "git+https://github.com/mob-timer/mob-timer.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pluralsight/mob-timer/issues"
+    "url": "https://github.com/mob-timer/mob-timer/issues"
   },
-  "homepage": "https://github.com/pluralsight/mob-timer#readme",
+  "homepage": "https://mob-timer.github.io",
   "devDependencies": {
     "electron": "^4.0.4",
     "electron-installer-dmg": "^2.0.0",

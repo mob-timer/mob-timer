@@ -20,7 +20,7 @@
     "url": "git+https://github.com/mob-timer/mob-timer.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/mob-timer/mob-timer/issues"
   },

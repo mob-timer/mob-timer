@@ -1,6 +1,5 @@
 {
   "name": "mob-timer",
-  "version": "1.0.0",
   "description": "A cross-platform mob-timer built on Electron for doing Mob Programming.",
   "main": "src/main.js",
   "scripts": {
@@ -21,6 +20,7 @@
   },
   "author": "",
   "license": "Apache-2.0",
+  "private": true,
   "bugs": {
     "url": "https://github.com/mob-timer/mob-timer/issues"
   },

@@ -1,6 +1,9 @@
 # Location of our build artifacts
 dist/
 
+# 👆 Custom rules specific to this project
+# 👇 This is generated, don't manually edit it, follow the links and replace the whole thing!
+
 # Created by https://www.gitignore.io/api/node,macos,linux,windows,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,macos,linux,windows,visualstudiocode
 

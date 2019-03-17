@@ -13,7 +13,7 @@
     "test": "mocha --use_strict --recursive",
     "tdd": "mocha --use_strict --recursive -w",
     "watch": "mocha --use_strict --recursive -w",
-    "coverage": "nyc mocha --use_strict --recursive"
+    "coverage": "nyc mocha --use_strict --recursive && nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
     "exclude": [

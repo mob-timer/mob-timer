@@ -37,6 +37,7 @@
   },
   "homepage": "https://mob-timer.github.io",
   "devDependencies": {
+    "coveralls": "^3.0.3",
     "electron": "^4.0.4",
     "electron-installer-dmg": "^2.0.0",
     "electron-packager": "^13.0.1",

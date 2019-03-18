@@ -18,7 +18,8 @@
   "nyc": {
     "exclude": [
       "**/*.specs.js",
-      "test/**/*.*"
+      "test/**/*.*",
+      "dist/**/*.*"
     ],
     "reporter": [
       "text-summary"

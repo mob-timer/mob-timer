@@ -4,18 +4,12 @@ const assert = require('assert')
 describe('window-snapper', () => {
   const fullHdScreen = { x: 0, y: 0, width: 1920, height: 1080 }
 
-  it('should return window coordinates if threshold is 0', () => {
+  it('should throw if threshold is 0 since it should not even be called', () => {
     const windowBounds = { x: 13, y: 37, width: 220, height: 90 }
     const screenBounds = fullHdScreen
     const snapThreshold = 0
-    const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, {
-      x: 13,
-      y: 37,
-      width: 220,
-      height: 90,
-      shouldSnap: false
-    })
+    const act = () => windowSnapper(windowBounds, screenBounds, snapThreshold)
+    assert.throws(act)
   })
 
   it('should not snap if far from edges', () => {

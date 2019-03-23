@@ -1,9 +1,9 @@
 const snapCheck = (windowBounds, screenBounds, snapThreshold) => {
-  const noSnap = { ...windowBounds, shouldSnap: false }
   if (snapThreshold <= 0) {
-    return noSnap
+    throw new Error('Not supported, not supposed to call window-snapper if threshold <= 0!')
   }
 
+  const noSnap = { ...windowBounds, shouldSnap: false }
   const isWithinThreshold = setupThresholdCheck(snapThreshold)
 
   return {

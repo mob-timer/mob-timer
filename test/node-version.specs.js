@@ -12,4 +12,11 @@ describe('Node version', () => {
       '.nvmrc', nvmrc, '.travis.yml', travisYml]
     assert.ok(matches, message.join('\n'))
   })
+
+  it('.nvmrc should match package.json engines node version', () => {
+    const nvmrc = fs.readFileSync('./.nvmrc', 'utf-8')
+    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
+
+    assert.strictEqual(packageJson.engines.node, nvmrc)
+  })
 })

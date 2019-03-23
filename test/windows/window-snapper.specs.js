@@ -9,7 +9,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 0
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 13, y: 37 })
+    assert.deepStrictEqual(result, { x: 13, y: 37, shouldSnap: false })
   })
 
   it('should not snap if far from edges', () => {
@@ -17,7 +17,7 @@ describe('window-snapper', () => {
     const screenBounds = { x: 0, y: 0, width: 200, height: 200 }
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 11, y: 11 })
+    assert.deepStrictEqual(result, { x: 11, y: 11, shouldSnap: false })
   })
 
   it('should snap to the left if close to the left screen edge', () => {
@@ -25,7 +25,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 0, y: 11 })
+    assert.deepStrictEqual(result, { x: 0, y: 11, shouldSnap: true })
   })
 
   it('should snap to the top and left if close to the top left screen corner', () => {
@@ -33,7 +33,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 0, y: 0 })
+    assert.deepStrictEqual(result, { x: 0, y: 0, shouldSnap: true })
   })
 
   it('should snap to the top if close to the top screen edge', () => {
@@ -41,7 +41,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 14, y: 0 })
+    assert.deepStrictEqual(result, { x: 14, y: 0, shouldSnap: true })
   })
 
   it('should snap to the top and right if close to the top right screen corner', () => {
@@ -49,7 +49,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 1700, y: 0 })
+    assert.deepStrictEqual(result, { x: 1700, y: 0, shouldSnap: true })
   })
 
   it('should snap to the right if close to the right screen edge', () => {
@@ -57,7 +57,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 1700, y: 13 })
+    assert.deepStrictEqual(result, { x: 1700, y: 13, shouldSnap: true })
   })
 
   it('should snap to the right and bottom if close to the right bottom screen corner', () => {
@@ -65,7 +65,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 1700, y: 990 })
+    assert.deepStrictEqual(result, { x: 1700, y: 990, shouldSnap: true })
   })
 
   it('should snap to the bottom if close to the bottom screen edge', () => {
@@ -73,7 +73,7 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 1685, y: 990 })
+    assert.deepStrictEqual(result, { x: 1685, y: 990, shouldSnap: true })
   })
 
   it('should snap to the bottom and left if close to the bottom left screen corner', () => {
@@ -81,6 +81,6 @@ describe('window-snapper', () => {
     const screenBounds = fullHdScreen
     const snapThreshold = 10
     const result = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    assert.deepStrictEqual(result, { x: 0, y: 990 })
+    assert.deepStrictEqual(result, { x: 0, y: 990, shouldSnap: true })
   })
 })

@@ -48,7 +48,7 @@ exports.createTimerWindow = () => {
     let screenBounds = electron.screen.getDisplayNearestPoint(getCenter(windowBounds)).workArea
 
     let snapTo = windowSnapper(windowBounds, screenBounds, snapThreshold)
-    if (snapTo.x !== windowBounds.x || snapTo.y !== windowBounds.y) {
+    if (snapTo.shouldSnap) {
       delayedSetBounds({
         width: timerWindowSize.width,
         height: timerWindowSize.height,

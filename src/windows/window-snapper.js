@@ -13,27 +13,31 @@ let isCloseTo = (a, b, snapThreshold) => {
 
 module.exports = (windowBounds, screenBounds, snapThreshold) => {
   if (snapThreshold <= 0) {
-    return { x: windowBounds.x, y: windowBounds.y }
+    return { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
   }
 
   let windowEdges = getEdges(windowBounds)
   let screenEdges = getEdges(screenBounds)
-  let snapTo = { x: windowBounds.x, y: windowBounds.y }
+  let snapTo = { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
 
   if (isCloseTo(windowEdges.left, screenEdges.left, snapThreshold)) {
     snapTo.x = screenEdges.left
+    snapTo.shouldSnap = true
   }
 
   if (isCloseTo(windowEdges.right, screenEdges.right, snapThreshold)) {
     snapTo.x = screenEdges.right - windowBounds.width
+    snapTo.shouldSnap = true
   }
 
   if (isCloseTo(windowEdges.top, screenEdges.top, snapThreshold)) {
     snapTo.y = screenEdges.top
+    snapTo.shouldSnap = true
   }
 
   if (isCloseTo(windowEdges.bottom, screenEdges.bottom, snapThreshold)) {
     snapTo.y = screenEdges.bottom - windowBounds.height
+    snapTo.shouldSnap = true
   }
 
   return snapTo

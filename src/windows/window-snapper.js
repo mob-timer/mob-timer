@@ -1,3 +1,20 @@
+const snapCheck = (windowBounds, screenBounds, snapThreshold) => {
+  const noSnap = { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
+  if (snapThreshold <= 0) {
+    return noSnap
+  }
+
+  const isWithinThreshold = setupThresholdCheck(snapThreshold)
+
+  return {
+    ...noSnap,
+    ...snapLeftCheck(windowBounds, screenBounds, isWithinThreshold),
+    ...snapRightCheck(windowBounds, screenBounds, isWithinThreshold),
+    ...snapTopCheck(windowBounds, screenBounds, isWithinThreshold),
+    ...snapBottomCheck(windowBounds, screenBounds, isWithinThreshold)
+  }
+}
+
 const setupThresholdCheck = snapThreshold => (a, b) => {
   return Math.abs(a - b) <= snapThreshold
 }
@@ -46,19 +63,4 @@ const snapBottomCheck = (windowBounds, screenBounds, isWithinThreshold) => {
   return {}
 }
 
-module.exports = (windowBounds, screenBounds, snapThreshold) => {
-  const noSnap = { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
-  if (snapThreshold <= 0) {
-    return noSnap
-  }
-
-  const isWithinThreshold = setupThresholdCheck(snapThreshold)
-
-  return {
-    ...noSnap,
-    ...snapLeftCheck(windowBounds, screenBounds, isWithinThreshold),
-    ...snapRightCheck(windowBounds, screenBounds, isWithinThreshold),
-    ...snapTopCheck(windowBounds, screenBounds, isWithinThreshold),
-    ...snapBottomCheck(windowBounds, screenBounds, isWithinThreshold)
-  }
-}
+module.exports = snapCheck

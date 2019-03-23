@@ -1,6 +1,6 @@
 const electron = require('electron')
 const { app } = electron
-const windowSnapper = require('./window-snapper')
+const { snapCheck } = require('./window-snapper')
 const path = require('path')
 const { debounce } = require('debounce')
 
@@ -51,7 +51,7 @@ exports.createTimerWindow = () => {
     }
     let screenBounds = electron.screen.getDisplayNearestPoint(getCenter(windowBounds)).workArea
 
-    const { shouldSnap, ...snapBounds } = windowSnapper(windowBounds, screenBounds, snapThreshold)
+    const { shouldSnap, ...snapBounds } = snapCheck(windowBounds, screenBounds, snapThreshold)
     if (shouldSnap) {
       delayedSetBounds(snapBounds)
     } else {

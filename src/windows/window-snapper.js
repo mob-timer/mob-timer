@@ -49,4 +49,4 @@ const snapBottomCheck = (windowBounds, screenBounds, isWithinThreshold) => {
   } : undefined
 }
 
-module.exports = snapCheck
+module.exports = { snapCheck }

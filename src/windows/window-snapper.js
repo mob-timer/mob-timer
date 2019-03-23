@@ -1,5 +1,5 @@
 const snapCheck = (windowBounds, screenBounds, snapThreshold) => {
-  const noSnap = { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
+  const noSnap = { ...windowBounds, shouldSnap: false }
   if (snapThreshold <= 0) {
     return noSnap
   }

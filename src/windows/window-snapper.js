@@ -1,4 +1,4 @@
-let getEdges = bounds => {
+const getEdges = bounds => {
   return {
     top: bounds.y,
     bottom: bounds.y + bounds.height,
@@ -7,8 +7,48 @@ let getEdges = bounds => {
   }
 }
 
-let isCloseTo = (a, b, snapThreshold) => {
+const isCloseTo = (a, b, snapThreshold) => {
   return Math.abs(a - b) <= snapThreshold
+}
+
+const snapLeftCheck = (windowBounds, windowEdges, screenEdges, snapThreshold) => {
+  if (isCloseTo(windowEdges.left, screenEdges.left, snapThreshold)) {
+    return {
+      x: screenEdges.left,
+      shouldSnap: true
+    }
+  }
+  return {}
+}
+
+const snapRightCheck = (windowBounds, windowEdges, screenEdges, snapThreshold) => {
+  if (isCloseTo(windowEdges.right, screenEdges.right, snapThreshold)) {
+    return {
+      x: screenEdges.right - windowBounds.width,
+      shouldSnap: true
+    }
+  }
+  return {}
+}
+
+const snapTopCheck = (windowBounds, windowEdges, screenEdges, snapThreshold) => {
+  if (isCloseTo(windowEdges.top, screenEdges.top, snapThreshold)) {
+    return {
+      y: screenEdges.top,
+      shouldSnap: true
+    }
+  }
+  return {}
+}
+
+const snapBottomCheck = (windowBounds, windowEdges, screenEdges, snapThreshold) => {
+  if (isCloseTo(windowEdges.bottom, screenEdges.bottom, snapThreshold)) {
+    return {
+      y: screenEdges.bottom - windowBounds.height,
+      shouldSnap: true
+    }
+  }
+  return {}
 }
 
 module.exports = (windowBounds, screenBounds, snapThreshold) => {
@@ -16,29 +56,16 @@ module.exports = (windowBounds, screenBounds, snapThreshold) => {
     return { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
   }
 
-  let windowEdges = getEdges(windowBounds)
-  let screenEdges = getEdges(screenBounds)
-  let snapTo = { x: windowBounds.x, y: windowBounds.y, shouldSnap: false }
+  const windowEdges = getEdges(windowBounds)
+  const screenEdges = getEdges(screenBounds)
 
-  if (isCloseTo(windowEdges.left, screenEdges.left, snapThreshold)) {
-    snapTo.x = screenEdges.left
-    snapTo.shouldSnap = true
+  return {
+    x: windowBounds.x,
+    y: windowBounds.y,
+    shouldSnap: false,
+    ...snapLeftCheck(windowBounds, windowEdges, screenEdges, snapThreshold),
+    ...snapRightCheck(windowBounds, windowEdges, screenEdges, snapThreshold),
+    ...snapTopCheck(windowBounds, windowEdges, screenEdges, snapThreshold),
+    ...snapBottomCheck(windowBounds, windowEdges, screenEdges, snapThreshold)
   }
-
-  if (isCloseTo(windowEdges.right, screenEdges.right, snapThreshold)) {
-    snapTo.x = screenEdges.right - windowBounds.width
-    snapTo.shouldSnap = true
-  }
-
-  if (isCloseTo(windowEdges.top, screenEdges.top, snapThreshold)) {
-    snapTo.y = screenEdges.top
-    snapTo.shouldSnap = true
-  }
-
-  if (isCloseTo(windowEdges.bottom, screenEdges.bottom, snapThreshold)) {
-    snapTo.y = screenEdges.bottom - windowBounds.height
-    snapTo.shouldSnap = true
-  }
-
-  return snapTo
 }

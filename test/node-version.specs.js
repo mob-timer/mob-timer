@@ -1,11 +1,12 @@
 const fs = require('fs')
 const assert = require('assert')
 
-describe('Node version', () => {
-  it('.nvmrc should match .travis.yml', () => {
-    const nvmrc = fs.readFileSync('./.nvmrc', 'utf-8')
-    const travisYml = fs.readFileSync('./.travis.yml', 'utf-8')
+describe('Node versions', () => {
+  const nvmrc = fs.readFileSync('./.nvmrc', 'utf-8')
+  const travisYml = fs.readFileSync('./.travis.yml', 'utf-8')
+  const packageJson = fs.readFileSync('./package.json', 'utf-8')
 
+  it('.nvmrc should match .travis.yml', () => {
     const matches = travisYml.indexOf(`- "${nvmrc}"`) !== -1
     const message = [
       'Could not find node version from .nvmrc in .travis.yml!\n',
@@ -14,9 +15,9 @@ describe('Node version', () => {
   })
 
   it('.nvmrc should match package.json engines node version', () => {
-    const nvmrc = fs.readFileSync('./.nvmrc', 'utf-8')
-    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
-
-    assert.strictEqual(packageJson.engines.node, nvmrc)
+    const message = [
+      'Could not find node version from .nvmrc in package.json!\n',
+      '.nvmrc', nvmrc, 'package.json', packageJson]
+    assert.strictEqual(JSON.parse(packageJson).engines.node, nvmrc, message)
   })
 })

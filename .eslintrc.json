@@ -38,7 +38,8 @@
         "allowModules": [
           "electron",
           "chai",
-          "sinon"
+          "sinon",
+          "electron-releases"
         ]
       }
     ],

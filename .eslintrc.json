@@ -12,14 +12,6 @@
     "mocha",
     "node"
   ],
-  "overrides": [
-    {
-      "files": "*.spec.js",
-      "rules": {
-        "no-unused-expressions": "off"
-      }
-    }
-  ],
   "rules": {
     "array-bracket-spacing": "error",
     "arrow-parens": [

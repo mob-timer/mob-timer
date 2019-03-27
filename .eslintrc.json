@@ -29,14 +29,6 @@
         ]
       }
     ],
-    "no-unused-vars": [
-      2,
-      {
-        "vars": "all",
-        "args": "after-used",
-        "ignoreRestSiblings": true
-      }
-    ],
     "space-before-function-paren": [
       "error",
       "never"

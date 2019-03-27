@@ -12,9 +12,6 @@
     "mocha",
     "node"
   ],
-  "globals": {
-    "expect": true
-  },
   "overrides": [
     {
       "files": "*.spec.js",

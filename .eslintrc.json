@@ -3,6 +3,7 @@
     "eslint:recommended",
     "plugin:node/recommended",
     "plugin:promise/recommended",
+    "plugin:mocha/recommended",
     "standard"
   ],
   "env": {
@@ -20,7 +21,6 @@
     ],
     "eol-last": "error",
     "generator-star-spacing": "off",
-    "mocha/no-exclusive-tests": "error",
     "node/no-unpublished-require": [
       "error",
       {

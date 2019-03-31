@@ -12,7 +12,7 @@
     "mocha": true
   },
   "globals": {
-    "document": false
+    "document": "readonly"
   },
   "plugins": [
     "node",

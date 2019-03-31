@@ -3,7 +3,8 @@
     "eslint:recommended",
     "plugin:node/recommended",
     "plugin:promise/recommended",
-    "plugin:mocha/recommended"
+    "plugin:mocha/recommended",
+    "plugin:import/recommended"
   ],
   "env": {
     "node": true,
@@ -16,7 +17,8 @@
   "plugins": [
     "node",
     "promise",
-    "mocha"
+    "mocha",
+    "import"
   ],
   "rules": {
     "node/no-unpublished-require": [

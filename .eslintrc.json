@@ -29,6 +29,7 @@
           "electron"
         ]
       }
-    ]
+    ],
+    "prettier/prettier": "warn"
   }
 }

@@ -16,10 +16,8 @@
     "document": "readonly"
   },
   "plugins": [
-    "node",
     "promise",
-    "mocha",
-    "import"
+    "mocha"
   ],
   "rules": {
     "node/no-unpublished-require": [

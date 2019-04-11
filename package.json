@@ -19,12 +19,12 @@
     "coverage": "nyc mocha && nyc report --reporter=text-lcov | coveralls"
   },
   "mocha": {
-    "spec": "!(node_modules|dist)/**/*.specs.js",
+    "spec": "!(node_modules|dist)/**/*.test.js",
     "recursive": true
   },
   "nyc": {
     "exclude": [
-      "**/*.specs.js",
+      "**/*.test.js",
       "test/**/*.*",
       "dist/**/*.*"
     ],

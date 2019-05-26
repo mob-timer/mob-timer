@@ -3,6 +3,7 @@ const { app } = electron;
 const { snapCheck } = require("./window-snapper");
 const path = require("path");
 const { debounce } = require("debounce");
+const { createConfigWindow } = require("./config/initialize");
 
 let timerWindow, configWindow, fullscreenWindow;
 let snapThreshold, secondsUntilFullscreen, timerAlwaysOnTop;
@@ -71,7 +72,7 @@ exports.createTimerWindow = () => {
 
 exports.showConfigWindow = () => {
   if (configWindow) {
-    configWindow.show();
+    configWindow.instance.show();
     return;
   }
   exports.createConfigWindow();
@@ -82,17 +83,8 @@ exports.createConfigWindow = () => {
     return;
   }
 
-  configWindow = new electron.BrowserWindow({
-    width: 420,
-    height: 500,
-    autoHideMenuBar: true,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
-
-  configWindow.loadURL(`file://${__dirname}/config/index.html`);
-  configWindow.on("closed", () => (configWindow = null));
+  configWindow = createConfigWindow();
+  configWindow.instance.on("closed", () => (configWindow = null));
 };
 
 exports.createFullscreenWindow = () => {
@@ -136,7 +128,7 @@ exports.dispatchEvent = (event, data) => {
     timerWindow.webContents.send(event, data);
   }
   if (configWindow) {
-    configWindow.webContents.send(event, data);
+    configWindow.instance.webContents.send(event, data);
   }
   if (fullscreenWindow) {
     fullscreenWindow.webContents.send(event, data);

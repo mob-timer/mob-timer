@@ -13,6 +13,7 @@ exports.createConfigWindow = () => {
   configWindowInstance.loadURL(`file://${__dirname}/index.html`);
 
   return {
-    instance: configWindowInstance
+    instance: configWindowInstance,
+    showWindow: () => configWindowInstance.show()
   };
 };

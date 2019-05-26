@@ -72,7 +72,7 @@ exports.createTimerWindow = () => {
 
 exports.showConfigWindow = () => {
   if (configWindow) {
-    configWindow.instance.show();
+    configWindow.showWindow();
     return;
   }
   exports.createConfigWindow();

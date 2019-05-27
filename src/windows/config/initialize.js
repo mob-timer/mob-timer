@@ -13,8 +13,9 @@ exports.createConfigWindow = () => {
   configWindowInstance.loadURL(`file://${__dirname}/index.html`);
 
   return {
-    instance: configWindowInstance,
     showWindow: () => configWindowInstance.show(),
-    onClose: callback => configWindowInstance.on("closed", callback)
+    onClose: callback => configWindowInstance.on("closed", callback),
+    sendEvent: (event, data) =>
+      configWindowInstance.webContents.send(event, data)
   };
 };

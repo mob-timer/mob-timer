@@ -128,7 +128,7 @@ exports.dispatchEvent = (event, data) => {
     timerWindow.webContents.send(event, data);
   }
   if (configWindow) {
-    configWindow.instance.webContents.send(event, data);
+    configWindow.sendEvent(event, data);
   }
   if (fullscreenWindow) {
     fullscreenWindow.webContents.send(event, data);

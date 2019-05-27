@@ -84,7 +84,7 @@ exports.createConfigWindow = () => {
   }
 
   configWindow = createConfigWindow();
-  configWindow.instance.on("closed", () => (configWindow = null));
+  configWindow.onClose(() => (configWindow = null));
 };
 
 exports.createFullscreenWindow = () => {

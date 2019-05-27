@@ -14,6 +14,7 @@ exports.createConfigWindow = () => {
 
   return {
     instance: configWindowInstance,
-    showWindow: () => configWindowInstance.show()
+    showWindow: () => configWindowInstance.show(),
+    onClose: callback => configWindowInstance.on("closed", callback)
   };
 };

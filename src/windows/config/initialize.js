@@ -1,6 +1,21 @@
 const electron = require("electron");
 
-exports.createConfigWindow = () => {
+let configWindow;
+
+exports.showConfigWindow = () => {
+  if (configWindow) {
+    configWindow.showWindow();
+    return;
+  }
+  configWindow = createConfigWindow();
+  configWindow.onClose(() => (configWindow = null));
+};
+
+exports.sendEventToConfigWindow = (event, data) => {
+  configWindow && configWindow.sendEvent(event, data);
+};
+
+const createConfigWindow = () => {
   const configWindowInstance = new electron.BrowserWindow({
     width: 420,
     height: 500,

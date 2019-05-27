@@ -75,14 +75,6 @@ exports.showConfigWindow = () => {
     configWindow.showWindow();
     return;
   }
-  exports.createConfigWindow();
-};
-
-exports.createConfigWindow = () => {
-  if (configWindow) {
-    return;
-  }
-
   configWindow = createConfigWindow();
   configWindow.onClose(() => (configWindow = null));
 };

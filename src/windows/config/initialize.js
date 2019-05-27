@@ -18,7 +18,7 @@ exports.sendEventToConfigWindow = (event, data) => {
 const createConfigWindow = () => {
   const configWindowInstance = new electron.BrowserWindow({
     width: 420,
-    height: 500,
+    height: 650,
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true

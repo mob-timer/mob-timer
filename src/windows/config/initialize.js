@@ -1,4 +1,4 @@
-const electron = require("electron");
+const { BrowserWindow } = require("electron");
 
 let configWindow;
 
@@ -16,7 +16,7 @@ exports.sendEventToConfigWindow = (event, data) => {
 };
 
 const createConfigWindow = () => {
-  const configWindowInstance = new electron.BrowserWindow({
+  const configWindowInstance = new BrowserWindow({
     width: 420,
     height: 650,
     autoHideMenuBar: true,

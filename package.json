@@ -16,7 +16,7 @@
     "test": "jest .",
     "tdd": "jest --watch",
     "watch": "jest --watch",
-    "coverage": "jest --coverage --coverageReporters=text-lcov"
+    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "jest": {
     "modulePathIgnorePatterns": [

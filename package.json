@@ -27,7 +27,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
-      "!src/**/*.test.js"
+      "!src/**/*.test.js",
+      "!src/**/test-*.js"
     ],
     "collectCoverage": true
   },

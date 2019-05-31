@@ -16,27 +16,20 @@
     "test": "jest .",
     "tdd": "jest --watch",
     "watch": "jest --watch",
-    "coverage": "nyc mocha && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "jest --coverage --coverageReporters=text-lcov"
   },
   "jest": {
     "modulePathIgnorePatterns": [
       "<rootDir>/dist"
-    ]
-  },
-  "mocha": {
-    "spec": "!(node_modules|dist)/**/*.test.js",
-    "recursive": true
-  },
-  "nyc": {
-    "exclude": [
-      "**/*.test.js",
-      "test/**/*.*",
-      "dist/**/*.*"
     ],
-    "reporter": [
+    "coverageReporters": [
       "text-summary"
     ],
-    "all": true
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js"
+    ],
+    "collectCoverage": true
   },
   "repository": {
     "type": "git",

@@ -12,7 +12,7 @@ describe("Mobbers", () => {
   describe("on construction", () => {
     it("should have no mobbers", () => {
       let result = mobbers.getAll();
-      assert.deepStrictEqual(result, []);
+      expect(result).toEqual([]);
     });
   });
 
@@ -82,7 +82,7 @@ describe("Mobbers", () => {
   describe("getCurrentAndNextMobbers", () => {
     it("return null values if there are no mobbers", () => {
       let result = mobbers.getCurrentAndNextMobbers();
-      assert.deepStrictEqual(result, { current: null, next: null });
+      expect(result).toEqual({ current: null, next: null });
     });
 
     it("return the same mobber for current and next if there is only one mobber", () => {
@@ -124,7 +124,7 @@ describe("Mobbers", () => {
     it("should do nothing when there are no mobbers", () => {
       mobbers.rotate();
       let result = mobbers.getCurrentAndNextMobbers();
-      assert.deepStrictEqual(result, { current: null, next: null });
+      expect(result).toEqual({ current: null, next: null });
     });
 
     it("should do nothing when there is only one mobber", () => {

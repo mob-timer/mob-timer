@@ -431,7 +431,7 @@ describe("timer-state", () => {
         );
       });
 
-      it("should get the correct seconds until fullscreen", () => {
+      it("should get the correct snap threshold", () => {
         assert.strictEqual(result.snapThreshold, expectedSnapThreshold);
       });
 

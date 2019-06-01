@@ -3,6 +3,7 @@
     "eslint:recommended",
     "plugin:node/recommended",
     "plugin:promise/recommended",
+    "plugin:jest/recommended",
     "plugin:import/recommended",
     "plugin:prettier/recommended"
   ],

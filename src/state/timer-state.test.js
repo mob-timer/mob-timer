@@ -7,7 +7,8 @@ describe("timer-state", () => {
 
   let assertEvent = eventName => {
     var event = events.find(x => x.event === eventName);
-    assert(event, eventName + " event not found");
+    var failureMessage = event ? undefined : eventName + " event not found";
+    expect(failureMessage).toBeUndefined();
     return event;
   };
 

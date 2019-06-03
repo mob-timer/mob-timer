@@ -134,12 +134,17 @@ describe("timer-state", () => {
 
     it("should publish a rotated event", () => {
       var event = assertEvent("rotated");
-      assert.strictEqual(
-        event.data.current.name,
-        "B",
-        "expected B to be current"
-      );
-      assert.strictEqual(event.data.next.name, "C", "expected C to be next");
+
+      const actual = {
+        currentName: event.data.current.name,
+        nextName: event.data.next.name
+      };
+
+      const expectations = {
+        currentName: "B",
+        nextName: "C"
+      };
+      expect(actual).toEqual(expectations);
     });
 
     it("should publish a timerChange event", () => {
@@ -154,12 +159,16 @@ describe("timer-state", () => {
       events = [];
       timerState.rotate();
       var event = assertEvent("rotated");
-      assert.strictEqual(
-        event.data.current.name,
-        "C",
-        "expected C to be current"
-      );
-      assert.strictEqual(event.data.next.name, "A", "expected A to be next");
+      const actual = {
+        currentName: event.data.current.name,
+        nextName: event.data.next.name
+      };
+
+      const expectations = {
+        currentName: "C",
+        nextName: "A"
+      };
+      expect(actual).toEqual(expectations);
     });
   });
 
@@ -208,8 +217,16 @@ describe("timer-state", () => {
 
     it("should publish a rotated event", () => {
       var event = assertEvent("rotated");
-      expect(event.data.current.name).toBe("A");
-      expect(event.data.next.name).toBe("A");
+      const actual = {
+        currentName: event.data.current.name,
+        nextName: event.data.next.name
+      };
+
+      const expectations = {
+        currentName: "A",
+        nextName: "A"
+      };
+      expect(actual).toEqual(expectations);
     });
   });
 
@@ -231,8 +248,16 @@ describe("timer-state", () => {
 
     it("should publish a rotated event", () => {
       var event = assertEvent("rotated");
-      expect(event.data.current.name).toBe("A");
-      expect(event.data.next.name).toBe("C");
+      const actual = {
+        currentName: event.data.current.name,
+        nextName: event.data.next.name
+      };
+
+      const expectations = {
+        currentName: "A",
+        nextName: "C"
+      };
+      expect(actual).toEqual(expectations);
     });
 
     it("should NOT publish a turnEnded event if the removed user was NOT current", () => {

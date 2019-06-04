@@ -46,6 +46,7 @@
   },
   "homepage": "https://mob-timer.github.io",
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "bestzip": "^2.1.4",
     "coveralls": "^3.0.3",
     "electron": "^5.0.0",

@@ -7,19 +7,16 @@ os:
   - osx
   - linux
 script:
-  - if [[ "$TRAVIS_OS_NAME" != "linux" ]]; then
-      npm run test;
-    fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      npm run coverage;
-    fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      npm run test;
       npm run build-win;
     fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      npm run test;
       npm run build-mac;
     fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      npm run coverage;
       npm run build-linux;
     fi
 after_script:

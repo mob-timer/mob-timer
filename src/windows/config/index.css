@@ -95,8 +95,13 @@ input[type="checkbox" i] {
   vertical-align: middle;
 }
 
-.settings > div {
-  margin-bottom: 10px;
+.additional-settings {
+  list-style-type: none;
+    padding: 0;
+}
+
+.additional-settings__item {
+  margin: 0.5em;
 }
 
 .fullscreen-seconds {

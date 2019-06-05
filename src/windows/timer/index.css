@@ -16,6 +16,8 @@ body {
   display: grid;
   grid-template-columns: min-content auto min-content;
   grid-template-rows: 1fr 1fr;
+  grid-template-areas: "current current-name configure"
+                       "current next         next";
   padding: 6px;
   box-sizing: border-box;
   grid-gap: 0 6px;
@@ -32,7 +34,7 @@ body {
 
 .timerContainer {
   position: relative;
-  grid-row: 1 / span 2;
+  grid-area: current;
 }
 
 .currentPic {
@@ -80,16 +82,17 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   align-self: center;
+  grid-area: current-name;
 }
 
 .nextContainer {
   position: relative;
-  grid-column: 2 / span 2;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: min-content auto;
   align-items: center;
   grid-gap: 5px;
+  grid-area: next;
 }
 
 .next {
@@ -122,6 +125,7 @@ body {
   background-size: 20px 20px;
   border: 0;
   opacity: .5;
+  grid-area: configure;
 }
 
 .configure:hover {

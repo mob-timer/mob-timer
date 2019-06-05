@@ -91,7 +91,6 @@ h1 {
 }
 
 input[type="checkbox" i] {
-  position: relative;
   vertical-align: middle;
 }
 
@@ -101,7 +100,7 @@ input[type="checkbox" i] {
 }
 
 .additional-settings__item {
-  margin: 0.5em;
+  margin-top: 1em;
 }
 
 .fullscreen-seconds {
@@ -110,6 +109,7 @@ input[type="checkbox" i] {
 
 .replay-audio-seconds {
   width: 40px;
+  margin-left: -1em;
 }
 
 #replayAudioContainer.disabled {
@@ -118,4 +118,5 @@ input[type="checkbox" i] {
 
 .custom-sound {
   width: 145px;
+  margin-left: -1em;
 }

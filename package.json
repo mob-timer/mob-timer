@@ -67,6 +67,7 @@
   "dependencies": {
     "@ibm/plex": "^2.0.0",
     "debounce": "^1.2.0",
+    "pretty-checkbox": "^3.0.3",
     "uuid": "^3.2.1"
   }
 }

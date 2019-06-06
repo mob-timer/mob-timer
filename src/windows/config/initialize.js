@@ -1,18 +1,21 @@
 const { BrowserWindow } = require("electron");
 
-let configWindow;
+exports.initialize = () => {
+  let configWindow;
 
-exports.showConfigWindow = () => {
-  if (configWindow) {
-    configWindow.showWindow();
-    return;
-  }
-  configWindow = createConfigWindow();
-  configWindow.onClose(() => (configWindow = null));
-};
-
-exports.sendEventToConfigWindow = (event, data) => {
-  configWindow && configWindow.sendEvent(event, data);
+  return {
+    showConfigWindow: () => {
+      if (configWindow) {
+        configWindow.showWindow();
+        return;
+      }
+      configWindow = createConfigWindow();
+      configWindow.onClose(() => (configWindow = null));
+    },
+    sendEventToConfigWindow: (event, data) => {
+      configWindow && configWindow.sendEvent(event, data);
+    }
+  };
 };
 
 const createConfigWindow = () => {

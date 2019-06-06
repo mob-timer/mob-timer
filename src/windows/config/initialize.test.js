@@ -69,7 +69,9 @@ describe("config window initialize", () => {
         BrowserWindowShow: 0
       });
     });
+  });
 
+  describe("sendEventToConfigWindow", () => {
     it("should send event to BrowserWindow webContents", () => {
       const { mockWebContentsSend } = mockBrowserWindowConstructor(
         mockElectron.BrowserWindow
@@ -109,40 +111,39 @@ describe("config window initialize", () => {
 
       expect(mockWebContentsSend).not.toHaveBeenCalled();
     });
+  });
 
-    const mockBrowserWindowConstructor = mockBrowserWindow => {
-      const mockLoadURL = jest.fn();
-      const mockOn = jest.fn();
-      const mockShow = jest.fn();
-      const mockWebContentsSend = jest.fn();
-      mockBrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return {
-          loadURL: mockLoadURL,
-          on: mockOn,
-          show: mockShow,
-          webContents: {
-            send: mockWebContentsSend
-          }
-        };
-      });
-
+  const mockBrowserWindowConstructor = mockBrowserWindow => {
+    const mockLoadURL = jest.fn();
+    const mockOn = jest.fn();
+    const mockShow = jest.fn();
+    const mockWebContentsSend = jest.fn();
+    mockBrowserWindow.mockImplementation(function() {
+      const invokedAsConstructor = this.constructor.name === "mockConstructor";
+      if (!invokedAsConstructor) {
+        throw new Error(
+          "BrowserWindow not invoked as ctor, did you forget new?"
+        );
+      }
       return {
-        mockLoadURL,
-        mockShow,
-        mockWebContentsSend,
-        simulateEvent: eventName => {
-          mockOn.mock.calls
-            .filter(args => args[0] === eventName)
-            .forEach(args => args[1]());
+        loadURL: mockLoadURL,
+        on: mockOn,
+        show: mockShow,
+        webContents: {
+          send: mockWebContentsSend
         }
       };
+    });
+
+    return {
+      mockLoadURL,
+      mockShow,
+      mockWebContentsSend,
+      simulateEvent: eventName => {
+        mockOn.mock.calls
+          .filter(args => args[0] === eventName)
+          .forEach(args => args[1]());
+      }
     };
-  });
+  };
 });

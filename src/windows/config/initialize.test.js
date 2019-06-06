@@ -8,16 +8,7 @@ jest.mock("electron", () => ({
 describe("config window initialize", () => {
   describe("showConfigWindow", () => {
     it("should create BrowserWindow with correct configuration", () => {
-      mockElectron.BrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return { loadURL: () => {}, on: () => {} };
-      });
+      mockBrowserWindowConstructor(mockElectron.BrowserWindow);
 
       const configWindow = initialize();
       configWindow.showConfigWindow();
@@ -31,17 +22,9 @@ describe("config window initialize", () => {
     });
 
     it("should load index.html after creating BrowserWindow", () => {
-      const mockLoadURL = jest.fn();
-      mockElectron.BrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return { loadURL: mockLoadURL, on: () => {} };
-      });
+      const { mockLoadURL } = mockBrowserWindowConstructor(
+        mockElectron.BrowserWindow
+      );
 
       const configWindow = initialize();
       configWindow.showConfigWindow();
@@ -52,18 +35,9 @@ describe("config window initialize", () => {
     });
 
     it("should re-open same BrowserWindow if not closed", () => {
-      const mockLoadURL = jest.fn();
-      const mockShow = jest.fn();
-      mockElectron.BrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return { loadURL: mockLoadURL, on: () => {}, show: mockShow };
-      });
+      const { mockShow } = mockBrowserWindowConstructor(
+        mockElectron.BrowserWindow
+      );
 
       const configWindow = initialize();
       configWindow.showConfigWindow();
@@ -73,23 +47,15 @@ describe("config window initialize", () => {
     });
 
     it("should create new BrowserWindow if old is closed", () => {
-      const mockLoadURL = jest.fn();
-      const mockShow = jest.fn();
-      const mockOn = jest.fn();
-      mockElectron.BrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return { loadURL: mockLoadURL, on: mockOn, show: mockShow };
-      });
+      const {
+        mockLoadURL,
+        mockShow,
+        simulateEvent
+      } = mockBrowserWindowConstructor(mockElectron.BrowserWindow);
 
       const configWindow = initialize();
       configWindow.showConfigWindow();
-      simulateEvent(mockOn, "closed");
+      simulateEvent("closed");
       configWindow.showConfigWindow();
 
       const mockCallCounts = {
@@ -105,27 +71,9 @@ describe("config window initialize", () => {
     });
 
     it("should send event to BrowserWindow webContents", () => {
-      const mockLoadURL = jest.fn();
-      const mockShow = jest.fn();
-      const mockOn = jest.fn();
-      const mockWebContentsSend = jest.fn();
-      mockElectron.BrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return {
-          loadURL: mockLoadURL,
-          on: mockOn,
-          show: mockShow,
-          webContents: {
-            send: mockWebContentsSend
-          }
-        };
-      });
+      const { mockWebContentsSend } = mockBrowserWindowConstructor(
+        mockElectron.BrowserWindow
+      );
 
       const configWindow = initialize();
       configWindow.showConfigWindow();
@@ -138,27 +86,9 @@ describe("config window initialize", () => {
     });
 
     it("should not send event if there never was a BrowserWindow", () => {
-      const mockLoadURL = jest.fn();
-      const mockShow = jest.fn();
-      const mockOn = jest.fn();
-      const mockWebContentsSend = jest.fn();
-      mockElectron.BrowserWindow.mockImplementation(function() {
-        const invokedAsConstructor =
-          this.constructor.name === "mockConstructor";
-        if (!invokedAsConstructor) {
-          throw new Error(
-            "BrowserWindow not invoked as ctor, did you forget new?"
-          );
-        }
-        return {
-          loadURL: mockLoadURL,
-          on: mockOn,
-          show: mockShow,
-          webContents: {
-            send: mockWebContentsSend
-          }
-        };
-      });
+      const { mockWebContentsSend } = mockBrowserWindowConstructor(
+        mockElectron.BrowserWindow
+      );
 
       const configWindow = initialize();
       configWindow.sendEventToConfigWindow("fake-event", "fake-event-data");
@@ -167,11 +97,25 @@ describe("config window initialize", () => {
     });
 
     it("should not send event if BrowserWindow has closed", () => {
+      const {
+        mockWebContentsSend,
+        simulateEvent
+      } = mockBrowserWindowConstructor(mockElectron.BrowserWindow);
+
+      const configWindow = initialize();
+      configWindow.showConfigWindow();
+      simulateEvent("closed");
+      configWindow.sendEventToConfigWindow("fake-event", "fake-event-data");
+
+      expect(mockWebContentsSend).not.toHaveBeenCalled();
+    });
+
+    const mockBrowserWindowConstructor = mockBrowserWindow => {
       const mockLoadURL = jest.fn();
-      const mockShow = jest.fn();
       const mockOn = jest.fn();
+      const mockShow = jest.fn();
       const mockWebContentsSend = jest.fn();
-      mockElectron.BrowserWindow.mockImplementation(function() {
+      mockBrowserWindow.mockImplementation(function() {
         const invokedAsConstructor =
           this.constructor.name === "mockConstructor";
         if (!invokedAsConstructor) {
@@ -189,18 +133,16 @@ describe("config window initialize", () => {
         };
       });
 
-      const configWindow = initialize();
-      configWindow.showConfigWindow();
-      simulateEvent(mockOn, "closed");
-      configWindow.sendEventToConfigWindow("fake-event", "fake-event-data");
-
-      expect(mockWebContentsSend).not.toHaveBeenCalled();
-    });
-
-    const simulateEvent = (mockOn, eventName) => {
-      mockOn.mock.calls
-        .filter(args => args[0] === eventName)
-        .forEach(args => args[1]());
+      return {
+        mockLoadURL,
+        mockShow,
+        mockWebContentsSend,
+        simulateEvent: eventName => {
+          mockOn.mock.calls
+            .filter(args => args[0] === eventName)
+            .forEach(args => args[1]());
+        }
+      };
     };
   });
 });

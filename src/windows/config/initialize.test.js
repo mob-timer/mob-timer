@@ -11,12 +11,9 @@ jest.mock("../lazy-singleton-window", () => ({
 
 describe("config window initialize", () => {
   it("should prepare for creating singleton window", () => {
-    const mockShowWindow = jest.fn();
-    const mockTrySendEvent = jest.fn();
-    mockLazySingletonWindow.asLazySingletonWindow.mockImplementation(() => ({
-      showWindow: mockShowWindow,
-      trySendEvent: mockTrySendEvent
-    }));
+    const { mockShowWindow, mockTrySendEvent } = mockAsLazySingletonWindow(
+      mockLazySingletonWindow.asLazySingletonWindow
+    );
 
     const configWindow = initialize();
 
@@ -28,18 +25,13 @@ describe("config window initialize", () => {
 
   describe("createBrowserWindow factory", () => {
     it("should create BrowserWindow with correct configuration", () => {
-      const mockShowWindow = jest.fn();
-      const mockTrySendEvent = jest.fn();
-      mockLazySingletonWindow.asLazySingletonWindow.mockImplementation(() => ({
-        showWindow: mockShowWindow,
-        trySendEvent: mockTrySendEvent
-      }));
+      const { invokeCreateBrowserWindow } = mockAsLazySingletonWindow(
+        mockLazySingletonWindow.asLazySingletonWindow
+      );
       mockBrowserWindowConstructor(mockElectron.BrowserWindow);
       initialize();
-      const createBrowserWindow =
-        mockLazySingletonWindow.asLazySingletonWindow.mock.calls[0][0];
 
-      createBrowserWindow();
+      invokeCreateBrowserWindow();
 
       expect(mockElectron.BrowserWindow).toHaveBeenCalledWith({
         autoHideMenuBar: true,
@@ -50,20 +42,15 @@ describe("config window initialize", () => {
     });
 
     it("should load index.html after creating BrowserWindow", () => {
-      const mockShowWindow = jest.fn();
-      const mockTrySendEvent = jest.fn();
-      mockLazySingletonWindow.asLazySingletonWindow.mockImplementation(() => ({
-        showWindow: mockShowWindow,
-        trySendEvent: mockTrySendEvent
-      }));
+      const { invokeCreateBrowserWindow } = mockAsLazySingletonWindow(
+        mockLazySingletonWindow.asLazySingletonWindow
+      );
       const { mockLoadURL } = mockBrowserWindowConstructor(
         mockElectron.BrowserWindow
       );
       initialize();
-      const createBrowserWindow =
-        mockLazySingletonWindow.asLazySingletonWindow.mock.calls[0][0];
 
-      createBrowserWindow();
+      invokeCreateBrowserWindow();
 
       expect(mockLoadURL).toHaveBeenCalledWith(
         expect.stringContaining("config/index.html")
@@ -90,4 +77,22 @@ describe("config window initialize", () => {
       };
     };
   });
+
+  const mockAsLazySingletonWindow = asLazySingletonWindow => {
+    const mockShowWindow = jest.fn();
+    const mockTrySendEvent = jest.fn();
+    asLazySingletonWindow.mockImplementation(() => ({
+      showWindow: mockShowWindow,
+      trySendEvent: mockTrySendEvent
+    }));
+
+    return {
+      mockShowWindow,
+      mockTrySendEvent,
+      invokeCreateBrowserWindow: () => {
+        const createBrowserWindow = asLazySingletonWindow.mock.calls[0][0];
+        createBrowserWindow();
+      }
+    };
+  };
 });

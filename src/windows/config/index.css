@@ -116,6 +116,10 @@ input[type="checkbox" i] {
   color: var(--disabled-text-color);
 }
 
+#replayAudioContainer.disabled .replay-audio-seconds-suffix {
+  opacity: 0.5;
+}
+
 .custom-sound {
   width: 145px;
   margin-left: -1em;

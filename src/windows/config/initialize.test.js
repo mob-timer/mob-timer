@@ -2,9 +2,6 @@ const { initialize } = require("./initialize");
 const mockElectron = require("electron");
 const mockLazySingletonWindow = require("../lazy-singleton-window");
 
-jest.mock("electron", () => ({
-  BrowserWindow: jest.fn()
-}));
 jest.mock("../lazy-singleton-window", () => ({
   asLazySingletonWindow: jest.fn()
 }));

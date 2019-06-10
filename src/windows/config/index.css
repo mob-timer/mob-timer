@@ -14,6 +14,7 @@ input {
 
 .container {
   margin: 20px;
+  min-width: 24rem;
 }
 
 .minutes {

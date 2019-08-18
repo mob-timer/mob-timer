@@ -15,7 +15,7 @@
     "travis-script-mac": "npm run test && npm run build-mac",
     "build-linux": "electron-packager . --platform=linux --arch=x64 --out=dist --icon=icon --overwrite",
     "package-linux": "bestzip dist/mob-timer-linux-x64.zip ./dist/mob-timer-linux-x64",
-    "travis-script-linux": "npm run coverage && npm run build-linux",
+    "travis-script-linux": "npm run test && npm run coverage && npm run build-linux",
     "lint": "eslint --format codeframe .",
     "pretest": "npm run lint",
     "test": "jest .",

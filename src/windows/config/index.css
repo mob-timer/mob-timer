@@ -68,11 +68,6 @@ input {
   align-items: center;
 }
 
-.mobberListActions {
-  margin: 4px 0 4px -5px;
-  display: flex;
-}
-
 .btn {
   background-color: var(--button-background-color);
   border: 0;

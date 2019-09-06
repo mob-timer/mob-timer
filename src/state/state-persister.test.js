@@ -1,6 +1,7 @@
 const persister = require("./state-persister");
 const sinon = require("sinon");
 const fs = require("fs");
+const { shell } = require("electron");
 const {
   stateFile,
   oldStateFile,
@@ -97,6 +98,20 @@ describe("state-persister", () => {
         fs.writeFileSync,
         stateFile,
         JSON.stringify(stateToWrite, null, 2)
+      );
+    });
+  });
+
+  describe("openExternally", () => {
+    it("should open the state file with shell", () => {
+      shell.openItem.mockImplementation(
+        path => `<result from openItem called with input ${path}>`
+      );
+
+      var result = persister.openExternally();
+
+      expect(result).toBe(
+        `<result from openItem called with input ${stateFile}>`
       );
     });
   });

@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { shell } = require("electron");
 const {
   stateFile,
   oldStateFile,
@@ -22,7 +23,12 @@ function write(state) {
   fs.writeFileSync(stateFile, JSON.stringify(state, null, 2));
 }
 
+function openExternally() {
+  return shell.openItem(stateFile);
+}
+
 module.exports = {
   read,
-  write
+  write,
+  openExternally
 };

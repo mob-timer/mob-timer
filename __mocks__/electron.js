@@ -1,3 +1,6 @@
 module.exports = {
-  BrowserWindow: jest.fn()
+  BrowserWindow: jest.fn(),
+  shell: {
+    openItem: jest.fn()
+  }
 };

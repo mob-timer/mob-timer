@@ -75,7 +75,7 @@ describe("state-persister", () => {
       sinon.assert.calledWith(
         fs.writeFileSync,
         persister.stateFile,
-        JSON.stringify(stateToWrite)
+        JSON.stringify(stateToWrite, null, 2)
       );
     });
 
@@ -91,7 +91,7 @@ describe("state-persister", () => {
       sinon.assert.calledWith(
         fs.writeFileSync,
         persister.stateFile,
-        JSON.stringify(stateToWrite)
+        JSON.stringify(stateToWrite, null, 2)
       );
     });
   });

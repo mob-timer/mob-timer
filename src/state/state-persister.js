@@ -20,7 +20,7 @@ function write(state) {
   if (!fs.existsSync(mobTimerDir)) {
     fs.mkdirSync(mobTimerDir);
   }
-  fs.writeFileSync(stateFile, JSON.stringify(state));
+  fs.writeFileSync(stateFile, JSON.stringify(state, null, 2));
 }
 
 module.exports = {

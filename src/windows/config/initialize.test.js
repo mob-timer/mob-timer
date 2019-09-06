@@ -32,9 +32,9 @@ describe("config window initialize", () => {
 
       expect(mockElectron.BrowserWindow).toHaveBeenCalledWith({
         autoHideMenuBar: true,
-        height: 680,
+        height: 720,
         webPreferences: { nodeIntegration: true },
-        width: 438
+        width: 450
       });
     });
 

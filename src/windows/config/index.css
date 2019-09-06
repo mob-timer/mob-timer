@@ -83,6 +83,10 @@ input {
   cursor: pointer;
 }
 
+.btn--first {
+  margin-left: 0;
+}
+
 h1 {
   font-size: 18px;
   border-bottom: 1px solid var(--main-text-color);

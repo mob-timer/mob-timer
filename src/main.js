@@ -62,6 +62,7 @@ ipc.on("setTimerAlwaysOnTop", (event, value) =>
 ipc.on("setShuffleMobbersOnStartup", (event, value) =>
   timerState.setShuffleMobbersOnStartup(value)
 );
+ipc.on("openStateFileExternally", statePersister.openExternally);
 
 app.on("window-all-closed", function() {
   if (process.platform !== "darwin") {

@@ -20,6 +20,7 @@ const timerAlwaysOnTopCheckbox = document.getElementById("timerAlwaysOnTop");
 const shuffleMobbersOnStartupCheckbox = document.getElementById(
   "shuffleMobbersOnStartup"
 );
+const openStateEl = document.getElementById("openStateFileExternally");
 
 function createMobberEl(mobber) {
   const el = document.createElement("div");
@@ -129,6 +130,11 @@ snapToEdgesCheckbox.addEventListener("change", () => {
 alertAudioCheckbox.addEventListener("change", () => updateAlertTimes());
 replayAlertAudioCheckbox.addEventListener("change", () => updateAlertTimes());
 replayAudioAfterSeconds.addEventListener("change", () => updateAlertTimes());
+
+openStateEl.addEventListener("click", event => {
+  event.preventDefault();
+  ipc.send("openStateFileExternally");
+});
 
 function updateAlertTimes() {
   updateAlertControls();

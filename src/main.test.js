@@ -5,10 +5,18 @@ let timerState = new TimerState();
 jest.mock("./state/timer-state", () => {
   const fakeSingletonInitialize = () => {};
   const fakeSingletonPublishConfig = () => {};
+  const fakeSingletonPause = () => {};
+  const fakeSingletonStart = () => {};
+  const fakeSingletonRotate = () => {};
+  const fakeSingletonShuffleMobbers = () => {};
   return function FakeTimerStateConstructor() {
     return {
       initialize: fakeSingletonInitialize,
-      publishConfig: fakeSingletonPublishConfig
+      publishConfig: fakeSingletonPublishConfig,
+      pause: fakeSingletonPause,
+      start: fakeSingletonStart,
+      rotate: fakeSingletonRotate,
+      shuffleMobbers: fakeSingletonShuffleMobbers
     };
   };
 });
@@ -22,12 +30,12 @@ describe("main", () => {
         ["timerWindowReady", timerState.initialize],
         ["configWindowReady", timerState.publishConfig],
         ["fullscreenWindowReady", timerState.publishConfig],
-        ["pause", expect.any(Function)],
-        ["unpause", expect.any(Function)],
-        ["skip", expect.any(Function)],
-        ["startTurn", expect.any(Function)],
+        ["pause", timerState.pause],
+        ["unpause", timerState.start],
+        ["skip", timerState.rotate],
+        ["startTurn", timerState.start],
         ["configure", expect.any(Function)],
-        ["shuffleMobbers", expect.any(Function)],
+        ["shuffleMobbers", timerState.shuffleMobbers],
         ["addMobber", expect.any(Function)],
         ["removeMobber", expect.any(Function)],
         ["updateMobber", expect.any(Function)],

@@ -1,4 +1,17 @@
 const { ipcMain } = require("electron");
+let TimerState = require("./state/timer-state");
+let timerState = new TimerState();
+
+jest.mock("./state/timer-state", () => {
+  const fakeSingletonInitialize = () => {};
+  const fakeSingletonPublishConfig = () => {};
+  return function FakeTimerStateConstructor() {
+    return {
+      initialize: fakeSingletonInitialize,
+      publishConfig: fakeSingletonPublishConfig
+    };
+  };
+});
 
 describe("main", () => {
   it("should register main process listeners", () => {
@@ -6,9 +19,9 @@ describe("main", () => {
     expect(ipcMain.on.mock.calls).toEqual(
       expect.arrayContaining([
         ["setShuffleMobbersOnStartup", expect.any(Function)],
-        ["timerWindowReady", expect.any(Function)],
-        ["configWindowReady", expect.any(Function)],
-        ["fullscreenWindowReady", expect.any(Function)],
+        ["timerWindowReady", timerState.initialize],
+        ["configWindowReady", timerState.publishConfig],
+        ["fullscreenWindowReady", timerState.publishConfig],
         ["pause", expect.any(Function)],
         ["unpause", expect.any(Function)],
         ["skip", expect.any(Function)],

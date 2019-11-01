@@ -24,9 +24,9 @@ function onTimerEvent(event, data) {
   }
 }
 
-ipc.on("timerWindowReady", () => timerState.initialize());
-ipc.on("configWindowReady", () => timerState.publishConfig());
-ipc.on("fullscreenWindowReady", () => timerState.publishConfig());
+ipc.on("timerWindowReady", timerState.initialize);
+ipc.on("configWindowReady", timerState.publishConfig);
+ipc.on("fullscreenWindowReady", timerState.publishConfig);
 
 ipc.on("pause", () => timerState.pause());
 ipc.on("unpause", () => timerState.start());

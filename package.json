@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "debounce": "^1.2.0",
+    "electron-reload": "^1.5.0",
     "pretty-checkbox": "^3.0.3",
     "typeface-work-sans": "0.0.72",
     "uuid": "^3.2.1"

@@ -6,6 +6,7 @@ os:
   - windows
   - osx
   - linux
+dist: xenial
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
       npm run travis-script-win;

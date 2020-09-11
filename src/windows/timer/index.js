@@ -103,7 +103,7 @@ ipc.on("configUpdated", (event, data) => {
 });
 
 ipc.on("alert", (event, data) => {
-  if (alertSoundTimes.some(item => item === data)) {
+  if (alertSoundTimes.some((item) => item === data)) {
     alertAudio.currentTime = 0;
     alertAudio.play();
   }

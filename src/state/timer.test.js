@@ -16,7 +16,7 @@ describe("Timer", () => {
   };
 
   let createTimer = () => {
-    timer = new Timer(timerOptions, x => callbacks.push(x));
+    timer = new Timer(timerOptions, (x) => callbacks.push(x));
   };
 
   beforeEach(() => {

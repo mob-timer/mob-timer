@@ -35,10 +35,10 @@ describe("Node versions", () => {
 function getMatchingElectronReleaseInfo() {
   const electronVersion = packageLockJson.dependencies.electron.version;
   const exactMatchElectronRelease = electronReleases.find(
-    release => release.version === electronVersion
+    (release) => release.version === electronVersion
   );
   const majorVersionElectronRelease = electronReleases.find(
-    release => release.version[0] === electronVersion[0]
+    (release) => release.version[0] === electronVersion[0]
   );
   const foundRelease = exactMatchElectronRelease || majorVersionElectronRelease;
   return {

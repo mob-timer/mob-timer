@@ -3,7 +3,7 @@ const getTheme = () => ({
   mobberBorderColor: getCSSVariable("--mobber-border-color"),
 });
 
-const getCSSVariable = variableName =>
+const getCSSVariable = (variableName) =>
   getComputedStyle(document.documentElement)
     .getPropertyValue(variableName)
     .trim();

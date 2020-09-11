@@ -32,7 +32,7 @@ class TimerState {
   createTimers(TimerClass) {
     this.mainTimer = new TimerClass(
       { countDown: true, time: this.secondsPerTurn },
-      secondsRemaining => {
+      (secondsRemaining) => {
         this.dispatchTimerChange(secondsRemaining);
         if (secondsRemaining < 0) {
           this.pause();
@@ -43,7 +43,7 @@ class TimerState {
       }
     );
 
-    this.alertsTimer = new TimerClass({ countDown: false }, alertSeconds => {
+    this.alertsTimer = new TimerClass({ countDown: false }, (alertSeconds) => {
       this.callback("alert", alertSeconds);
     });
   }
@@ -195,7 +195,7 @@ class TimerState {
 
   loadState(state) {
     if (state.mobbers) {
-      state.mobbers.forEach(x => this.addMobber(x));
+      state.mobbers.forEach((x) => this.addMobber(x));
     }
 
     this.setSecondsPerTurn(state.secondsPerTurn || this.secondsPerTurn);

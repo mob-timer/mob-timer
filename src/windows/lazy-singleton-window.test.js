@@ -104,10 +104,10 @@ describe("asLazySingletonWindow", () => {
       })),
       mockShow,
       mockWebContentsSend,
-      simulateEvent: eventName => {
+      simulateEvent: (eventName) => {
         mockOn.mock.calls
-          .filter(args => args[0] === eventName)
-          .forEach(args => args[1]());
+          .filter((args) => args[0] === eventName)
+          .forEach((args) => args[1]());
       },
     };
   };

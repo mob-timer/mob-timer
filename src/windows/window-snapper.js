@@ -17,7 +17,7 @@ const snapCheck = (windowBounds, screenBounds, snapThreshold) => {
   };
 };
 
-const setupThresholdCheck = snapThreshold => (a, b) => {
+const setupThresholdCheck = (snapThreshold) => (a, b) => {
   return Math.abs(a - b) <= snapThreshold;
 };
 

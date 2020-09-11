@@ -1,4 +1,4 @@
-exports.asLazySingletonWindow = createBrowserWindow => {
+exports.asLazySingletonWindow = (createBrowserWindow) => {
   let browserWindow;
 
   return {

@@ -54,7 +54,7 @@ describe("config window initialize", () => {
       );
     });
 
-    const mockBrowserWindowConstructor = mockBrowserWindow => {
+    const mockBrowserWindowConstructor = (mockBrowserWindow) => {
       const mockLoadURL = jest.fn();
       mockBrowserWindow.mockImplementation(function () {
         const invokedAsConstructor =
@@ -75,7 +75,7 @@ describe("config window initialize", () => {
     };
   });
 
-  const mockAsLazySingletonWindow = asLazySingletonWindow => {
+  const mockAsLazySingletonWindow = (asLazySingletonWindow) => {
     const mockShowWindow = jest.fn();
     const mockTrySendEvent = jest.fn();
     asLazySingletonWindow.mockImplementation(() => ({

@@ -5,8 +5,8 @@ describe("timer-state", () => {
   let timerState;
   let events;
 
-  let assertEvent = eventName => {
-    var event = events.find(x => x.event === eventName);
+  let assertEvent = (eventName) => {
+    var event = events.find((x) => x.event === eventName);
     var failureMessage = event ? undefined : eventName + " event not found";
     expect(failureMessage).toBeUndefined();
     return event;
@@ -265,7 +265,7 @@ describe("timer-state", () => {
     });
 
     it("should NOT publish a turnEnded event if the removed user was NOT current", () => {
-      var event = events.find(x => x.event === "turnEnded");
+      var event = events.find((x) => x.event === "turnEnded");
       expect(event).toBe(undefined);
     });
 
@@ -347,7 +347,7 @@ describe("timer-state", () => {
   describe("shuffleMobbers", () => {
     beforeEach(() => {
       const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-      letters.forEach(x => timerState.addMobber({ id: x }));
+      letters.forEach((x) => timerState.addMobber({ id: x }));
       events = [];
       timerState.shuffleMobbers();
     });
@@ -363,7 +363,7 @@ describe("timer-state", () => {
     it("should shuffle the mobbers", () => {
       const mobbers = timerState
         .getState()
-        .mobbers.map(x => x.id)
+        .mobbers.map((x) => x.id)
         .join("");
       expect(mobbers).not.toBe("abcdefghij");
     });
@@ -457,8 +457,12 @@ describe("timer-state", () => {
       });
 
       it("should get correct mobbers", () => {
-        var actualJack = result.mobbers.find(x => x.name === expectedJack.name);
-        var actualJill = result.mobbers.find(x => x.name === expectedJill.name);
+        var actualJack = result.mobbers.find(
+          (x) => x.name === expectedJack.name
+        );
+        var actualJill = result.mobbers.find(
+          (x) => x.name === expectedJill.name
+        );
 
         expect(expectedJack).toEqual(actualJack);
         expect(expectedJill).toEqual(actualJill);
@@ -537,7 +541,9 @@ describe("timer-state", () => {
       });
 
       it("should get correct mobber", () => {
-        var actualJack = result.mobbers.find(x => x.name === expectedJack.name);
+        var actualJack = result.mobbers.find(
+          (x) => x.name === expectedJack.name
+        );
 
         expect(expectedJack).toEqual(actualJack);
       });

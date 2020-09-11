@@ -45,7 +45,7 @@ exports.createTimerWindow = () => {
       return;
     }
 
-    let getCenter = bounds => {
+    let getCenter = (bounds) => {
       return {
         x: bounds.x + bounds.width / 2,
         y: bounds.y + bounds.height / 2,
@@ -124,7 +124,7 @@ exports.dispatchEvent = (event, data) => {
   }
 };
 
-exports.setConfigState = data => {
+exports.setConfigState = (data) => {
   var needToRecreateTimerWindow = timerAlwaysOnTop !== data.timerAlwaysOnTop;
 
   snapThreshold = data.snapThreshold;

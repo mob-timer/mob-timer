@@ -40,7 +40,7 @@ describe("Mobbers", () => {
 
       mobbers.shuffleMobbers();
 
-      const mobberIds = mobbers.getAll().map(mobber => mobber.id);
+      const mobberIds = mobbers.getAll().map((mobber) => mobber.id);
       expect(mobberIds).toEqual([
         "mobber-1",
         "mobber-3",

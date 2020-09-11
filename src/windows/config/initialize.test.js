@@ -56,7 +56,7 @@ describe("config window initialize", () => {
 
     const mockBrowserWindowConstructor = mockBrowserWindow => {
       const mockLoadURL = jest.fn();
-      mockBrowserWindow.mockImplementation(function() {
+      mockBrowserWindow.mockImplementation(function () {
         const invokedAsConstructor =
           this.constructor.name === "mockConstructor";
         if (!invokedAsConstructor) {

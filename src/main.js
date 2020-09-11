@@ -69,12 +69,12 @@ ipc.on("setShuffleMobbersOnStartup", (event, value) =>
   timerState.setShuffleMobbersOnStartup(value)
 );
 
-app.on("window-all-closed", function() {
+app.on("window-all-closed", function () {
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
-app.on("activate", function() {
+app.on("activate", function () {
   windows.createTimerWindow();
 });

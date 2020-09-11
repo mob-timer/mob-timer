@@ -5,8 +5,8 @@ describe("timer-state", () => {
   let timerState;
   let events;
 
-  let assertEvent = eventName => {
-    var event = events.find(x => x.event === eventName);
+  let assertEvent = (eventName) => {
+    var event = events.find((x) => x.event === eventName);
     var failureMessage = event ? undefined : eventName + " event not found";
     expect(failureMessage).toBeUndefined();
     return event;
@@ -27,7 +27,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -56,7 +56,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
   });
@@ -64,7 +64,7 @@ describe("timer-state", () => {
   describe("start", () => {
     beforeEach(() => timerState.start());
 
-    it("should start the mainTimer", function() {
+    it("should start the mainTimer", function () {
       expect(timerState.mainTimer.isRunning).toBe(true);
     });
 
@@ -81,7 +81,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 599,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -141,12 +141,12 @@ describe("timer-state", () => {
 
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "B",
-        nextName: "C"
+        nextName: "C",
       };
       expect(actual).toEqual(expectations);
     });
@@ -155,7 +155,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -165,12 +165,12 @@ describe("timer-state", () => {
       var event = assertEvent("rotated");
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "C",
-        nextName: "A"
+        nextName: "A",
       };
       expect(actual).toEqual(expectations);
     });
@@ -223,12 +223,12 @@ describe("timer-state", () => {
       var event = assertEvent("rotated");
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "A",
-        nextName: "A"
+        nextName: "A",
       };
       expect(actual).toEqual(expectations);
     });
@@ -254,18 +254,18 @@ describe("timer-state", () => {
       var event = assertEvent("rotated");
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "A",
-        nextName: "C"
+        nextName: "C",
       };
       expect(actual).toEqual(expectations);
     });
 
     it("should NOT publish a turnEnded event if the removed user was NOT current", () => {
-      var event = events.find(x => x.event === "turnEnded");
+      var event = events.find((x) => x.event === "turnEnded");
       expect(event).toBe(undefined);
     });
 
@@ -324,7 +324,7 @@ describe("timer-state", () => {
       var timerChangeEvent = assertEvent("timerChange");
       expect(timerChangeEvent.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -347,7 +347,7 @@ describe("timer-state", () => {
   describe("shuffleMobbers", () => {
     beforeEach(() => {
       const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-      letters.forEach(x => timerState.addMobber({ id: x }));
+      letters.forEach((x) => timerState.addMobber({ id: x }));
       events = [];
       timerState.shuffleMobbers();
     });
@@ -363,7 +363,7 @@ describe("timer-state", () => {
     it("should shuffle the mobbers", () => {
       const mobbers = timerState
         .getState()
-        .mobbers.map(x => x.id)
+        .mobbers.map((x) => x.id)
         .join("");
       expect(mobbers).not.toBe("abcdefghij");
     });
@@ -381,7 +381,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 300,
-        secondsPerTurn: 300
+        secondsPerTurn: 300,
       });
     });
   });
@@ -457,8 +457,12 @@ describe("timer-state", () => {
       });
 
       it("should get correct mobbers", () => {
-        var actualJack = result.mobbers.find(x => x.name === expectedJack.name);
-        var actualJill = result.mobbers.find(x => x.name === expectedJill.name);
+        var actualJack = result.mobbers.find(
+          (x) => x.name === expectedJack.name
+        );
+        var actualJill = result.mobbers.find(
+          (x) => x.name === expectedJill.name
+        );
 
         expect(expectedJack).toEqual(actualJack);
         expect(expectedJill).toEqual(actualJill);
@@ -537,7 +541,9 @@ describe("timer-state", () => {
       });
 
       it("should get correct mobber", () => {
-        var actualJack = result.mobbers.find(x => x.name === expectedJack.name);
+        var actualJack = result.mobbers.find(
+          (x) => x.name === expectedJack.name
+        );
 
         expect(expectedJack).toEqual(actualJack);
       });
@@ -558,7 +564,7 @@ describe("timer-state", () => {
           alertSound: "bell.mp3",
           alertSoundTimes: [2, 3, 5, 8],
           timerAlwaysOnTop: false,
-          shuffleMobbersOnStartup: true
+          shuffleMobbersOnStartup: true,
         };
 
         timerState.loadState(state);
@@ -621,7 +627,7 @@ describe("timer-state", () => {
     describe("when loading state with one mobber", () => {
       beforeAll(() => {
         state = {
-          mobbers: [{ name: "jack" }]
+          mobbers: [{ name: "jack" }],
         };
 
         timerState.loadState(state);

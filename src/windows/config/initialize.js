@@ -8,7 +8,7 @@ exports.initialize = () => {
 
   return {
     showConfigWindow: showWindow,
-    sendEventToConfigWindow: trySendEvent
+    sendEventToConfigWindow: trySendEvent,
   };
 };
 
@@ -19,8 +19,8 @@ const createConfigWindow = () => {
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true //This should be disabled to get better security, but is used for showOpenDialog as of now!
-    }
+      enableRemoteModule: true, //This should be disabled to get better security, but is used for showOpenDialog as of now!
+    },
   });
 
   configWindowInstance.loadURL(`file://${__dirname}/index.html`);

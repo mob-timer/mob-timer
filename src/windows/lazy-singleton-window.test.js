@@ -41,11 +41,11 @@ describe("asLazySingletonWindow", () => {
 
       const mockCallCounts = {
         createBrowserWindow: mockCreateBrowserWindow.mock.calls.length,
-        BrowserWindowShow: mockShow.mock.calls.length
+        BrowserWindowShow: mockShow.mock.calls.length,
       };
       expect(mockCallCounts).toEqual({
         createBrowserWindow: 2,
-        BrowserWindowShow: 0
+        BrowserWindowShow: 0,
       });
     });
   });
@@ -77,7 +77,7 @@ describe("asLazySingletonWindow", () => {
       const {
         mockCreateBrowserWindow,
         simulateEvent,
-        mockWebContentsSend
+        mockWebContentsSend,
       } = setup();
 
       const singletonWindow = asLazySingletonWindow(mockCreateBrowserWindow);
@@ -99,16 +99,16 @@ describe("asLazySingletonWindow", () => {
         on: mockOn,
         show: mockShow,
         webContents: {
-          send: mockWebContentsSend
-        }
+          send: mockWebContentsSend,
+        },
       })),
       mockShow,
       mockWebContentsSend,
-      simulateEvent: eventName => {
+      simulateEvent: (eventName) => {
         mockOn.mock.calls
-          .filter(args => args[0] === eventName)
-          .forEach(args => args[1]());
-      }
+          .filter((args) => args[0] === eventName)
+          .forEach((args) => args[1]());
+      },
     };
   };
 });

@@ -1,10 +1,10 @@
 module.exports = {
   BrowserWindow: jest.fn(),
   ipcMain: {
-    on: jest.fn()
+    on: jest.fn(),
   },
   app: {
     on: jest.fn(),
-    getAppPath: jest.fn()
-  }
+    getAppPath: jest.fn(),
+  },
 };

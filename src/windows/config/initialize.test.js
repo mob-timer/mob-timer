@@ -3,7 +3,7 @@ const mockElectron = require("electron");
 const mockLazySingletonWindow = require("../lazy-singleton-window");
 
 jest.mock("../lazy-singleton-window", () => ({
-  asLazySingletonWindow: jest.fn()
+  asLazySingletonWindow: jest.fn(),
 }));
 
 describe("config window initialize", () => {
@@ -16,7 +16,7 @@ describe("config window initialize", () => {
 
     expect(configWindow).toEqual({
       showConfigWindow: mockShowWindow,
-      sendEventToConfigWindow: mockTrySendEvent
+      sendEventToConfigWindow: mockTrySendEvent,
     });
   });
 
@@ -34,7 +34,7 @@ describe("config window initialize", () => {
         autoHideMenuBar: true,
         height: 680,
         webPreferences: { nodeIntegration: true, enableRemoteModule: true },
-        width: 438
+        width: 438,
       });
     });
 
@@ -54,9 +54,9 @@ describe("config window initialize", () => {
       );
     });
 
-    const mockBrowserWindowConstructor = mockBrowserWindow => {
+    const mockBrowserWindowConstructor = (mockBrowserWindow) => {
       const mockLoadURL = jest.fn();
-      mockBrowserWindow.mockImplementation(function() {
+      mockBrowserWindow.mockImplementation(function () {
         const invokedAsConstructor =
           this.constructor.name === "mockConstructor";
         if (!invokedAsConstructor) {
@@ -65,22 +65,22 @@ describe("config window initialize", () => {
           );
         }
         return {
-          loadURL: mockLoadURL
+          loadURL: mockLoadURL,
         };
       });
 
       return {
-        mockLoadURL
+        mockLoadURL,
       };
     };
   });
 
-  const mockAsLazySingletonWindow = asLazySingletonWindow => {
+  const mockAsLazySingletonWindow = (asLazySingletonWindow) => {
     const mockShowWindow = jest.fn();
     const mockTrySendEvent = jest.fn();
     asLazySingletonWindow.mockImplementation(() => ({
       showWindow: mockShowWindow,
-      trySendEvent: mockTrySendEvent
+      trySendEvent: mockTrySendEvent,
     }));
 
     return {
@@ -89,7 +89,7 @@ describe("config window initialize", () => {
       invokeCreateBrowserWindow: () => {
         const createBrowserWindow = asLazySingletonWindow.mock.calls[0][0];
         createBrowserWindow();
-      }
+      },
     };
   };
 });

@@ -16,7 +16,7 @@ jest.mock("./state/timer-state", () => {
       pause: fakeSingletonPause,
       start: fakeSingletonStart,
       rotate: fakeSingletonRotate,
-      shuffleMobbers: fakeSingletonShuffleMobbers
+      shuffleMobbers: fakeSingletonShuffleMobbers,
     };
   };
 });
@@ -45,7 +45,7 @@ describe("main", () => {
         ["setAlertSoundTimes", expect.any(Function)],
         ["setAlertSound", expect.any(Function)],
         ["setTimerAlwaysOnTop", expect.any(Function)],
-        ["setShuffleMobbersOnStartup", expect.any(Function)]
+        ["setShuffleMobbersOnStartup", expect.any(Function)],
       ])
     );
   });

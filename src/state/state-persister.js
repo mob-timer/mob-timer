@@ -2,7 +2,7 @@ const fs = require("fs");
 const {
   stateFile,
   oldStateFile,
-  mobTimerDir
+  mobTimerDir,
 } = require("./state-persister-paths");
 
 function read() {
@@ -24,5 +24,5 @@ function write(state) {
 
 module.exports = {
   read,
-  write
+  write,
 };

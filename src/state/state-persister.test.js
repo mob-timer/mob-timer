@@ -4,7 +4,7 @@ const fs = require("fs");
 const {
   stateFile,
   oldStateFile,
-  mobTimerDir
+  mobTimerDir,
 } = require("./state-persister-paths");
 
 describe("state-persister", () => {

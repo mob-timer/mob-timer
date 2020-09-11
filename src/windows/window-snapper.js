@@ -13,11 +13,11 @@ const snapCheck = (windowBounds, screenBounds, snapThreshold) => {
     ...snapLeftCheck(windowBounds, screenBounds, isWithinThreshold),
     ...snapRightCheck(windowBounds, screenBounds, isWithinThreshold),
     ...snapTopCheck(windowBounds, screenBounds, isWithinThreshold),
-    ...snapBottomCheck(windowBounds, screenBounds, isWithinThreshold)
+    ...snapBottomCheck(windowBounds, screenBounds, isWithinThreshold),
   };
 };
 
-const setupThresholdCheck = snapThreshold => (a, b) => {
+const setupThresholdCheck = (snapThreshold) => (a, b) => {
   return Math.abs(a - b) <= snapThreshold;
 };
 
@@ -25,7 +25,7 @@ const snapLeftCheck = (windowBounds, screenBounds, isWithinThreshold) =>
   isWithinThreshold(windowBounds.x, screenBounds.x)
     ? {
         x: screenBounds.x,
-        shouldSnap: true
+        shouldSnap: true,
       }
     : undefined;
 
@@ -35,7 +35,7 @@ const snapRightCheck = (windowBounds, screenBounds, isWithinThreshold) => {
   return isWithinThreshold(rightWindowEdge, rightScreenEdge)
     ? {
         x: rightScreenEdge - windowBounds.width,
-        shouldSnap: true
+        shouldSnap: true,
       }
     : undefined;
 };
@@ -44,7 +44,7 @@ const snapTopCheck = (windowBounds, screenBounds, isWithinThreshold) =>
   isWithinThreshold(windowBounds.y, screenBounds.y)
     ? {
         y: screenBounds.y,
-        shouldSnap: true
+        shouldSnap: true,
       }
     : undefined;
 
@@ -54,7 +54,7 @@ const snapBottomCheck = (windowBounds, screenBounds, isWithinThreshold) => {
   return isWithinThreshold(bottomWindowEdge, bottomScreenEdge)
     ? {
         y: bottomScreenEdge - windowBounds.height,
-        shouldSnap: true
+        shouldSnap: true,
       }
     : undefined;
 };

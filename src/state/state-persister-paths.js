@@ -8,5 +8,5 @@ const oldStateFile = path.join(os.tmpdir(), "state.json");
 module.exports = {
   stateFile,
   oldStateFile,
-  mobTimerDir
+  mobTimerDir,
 };

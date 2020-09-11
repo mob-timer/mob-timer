@@ -5,14 +5,14 @@ const path = require("path");
 const { debounce } = require("debounce");
 const {
   showConfigWindow,
-  sendEventToConfigWindow
+  sendEventToConfigWindow,
 } = require("./config/initialize").initialize();
 
 let timerWindow, fullscreenWindow;
 let snapThreshold, secondsUntilFullscreen, timerAlwaysOnTop;
 const timerWindowSize = {
   width: 220,
-  height: 90
+  height: 90,
 };
 
 exports.createTimerWindow = () => {
@@ -31,9 +31,9 @@ exports.createTimerWindow = () => {
     frame: false,
     icon: path.join(__dirname, "/../../src/windows/img/icon.png"),
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     },
-    maximizable: false
+    maximizable: false,
   });
 
   timerWindow.loadURL(`file://${__dirname}/timer/index.html`);
@@ -45,17 +45,17 @@ exports.createTimerWindow = () => {
       return;
     }
 
-    let getCenter = bounds => {
+    let getCenter = (bounds) => {
       return {
         x: bounds.x + bounds.width / 2,
-        y: bounds.y + bounds.height / 2
+        y: bounds.y + bounds.height / 2,
       };
     };
 
     let windowBounds = {
       ...timerWindow.getBounds(),
       width: timerWindowSize.width,
-      height: timerWindowSize.height
+      height: timerWindowSize.height,
     };
     let screenBounds = electron.screen.getDisplayNearestPoint(
       getCenter(windowBounds)
@@ -88,8 +88,8 @@ exports.createFullscreenWindow = () => {
     resizable: false,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   });
 
   fullscreenWindow.loadURL(`file://${__dirname}/fullscreen/index.html`);
@@ -124,7 +124,7 @@ exports.dispatchEvent = (event, data) => {
   }
 };
 
-exports.setConfigState = data => {
+exports.setConfigState = (data) => {
   var needToRecreateTimerWindow = timerAlwaysOnTop !== data.timerAlwaysOnTop;
 
   snapThreshold = data.snapThreshold;

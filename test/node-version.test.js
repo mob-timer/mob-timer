@@ -22,7 +22,7 @@ describe("Node versions", () => {
       ? undefined
       : [
           `Could not find node version ${nodeVersion} in .travis.yml!`,
-          travisYml
+          travisYml,
         ].join("\n");
     expect(failMessage).toBeUndefined();
   });
@@ -35,14 +35,14 @@ describe("Node versions", () => {
 function getMatchingElectronReleaseInfo() {
   const electronVersion = packageLockJson.dependencies.electron.version;
   const exactMatchElectronRelease = electronReleases.find(
-    release => release.version === electronVersion
+    (release) => release.version === electronVersion
   );
   const majorVersionElectronRelease = electronReleases.find(
-    release => release.version[0] === electronVersion[0]
+    (release) => release.version[0] === electronVersion[0]
   );
   const foundRelease = exactMatchElectronRelease || majorVersionElectronRelease;
   return {
     electronVersion: foundRelease.version,
-    nodeVersion: foundRelease.deps.node
+    nodeVersion: foundRelease.deps.node,
   };
 }

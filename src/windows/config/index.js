@@ -60,7 +60,7 @@ function selectImage(mobber) {
     .showOpenDialog({
       title: "Select image",
       filters: [{ name: "Images", extensions: ["jpg", "png", "gif"] }],
-      properties: ["openFile"]
+      properties: ["openFile"],
     })
     .then(selection => {
       if (!selection.canceled) {
@@ -168,7 +168,7 @@ useCustomSoundCheckbox.addEventListener("change", () => {
       .showOpenDialog({
         title: "Select alert sound",
         filters: [{ name: "MP3", extensions: ["mp3"] }],
-        properties: ["openFile"]
+        properties: ["openFile"],
       })
       .then(selection => {
         if (!selection.canceled) {

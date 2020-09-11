@@ -11,6 +11,6 @@ exports.asLazySingletonWindow = createBrowserWindow => {
       browserWindow.on("closed", () => (browserWindow = undefined));
     },
     trySendEvent: (event, data) =>
-      browserWindow && browserWindow.webContents.send(event, data)
+      browserWindow && browserWindow.webContents.send(event, data),
   };
 };

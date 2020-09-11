@@ -45,7 +45,7 @@ describe("Mobbers", () => {
         "mobber-1",
         "mobber-3",
         "mobber-4",
-        "mobber-2"
+        "mobber-2",
       ]);
     });
   });
@@ -231,7 +231,7 @@ describe("Mobbers", () => {
       mobbers.updateMobber({
         name: "Test 2-updated",
         id: "t2",
-        image: "image-path"
+        image: "image-path",
       });
       let result = mobbers.getAll();
       expect(result.length).toBe(3);
@@ -246,7 +246,7 @@ describe("Mobbers", () => {
       mobbers.updateMobber({
         name: "Tester",
         id: "other-id",
-        image: "image-path"
+        image: "image-path",
       });
       let result = mobbers.getAll();
       expect(result.length).toBe(1);

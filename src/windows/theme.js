@@ -1,6 +1,6 @@
 const getTheme = () => ({
   mobberBorderHighlightColor: getCSSVariable("--mobber-border-highlight-color"),
-  mobberBorderColor: getCSSVariable("--mobber-border-color")
+  mobberBorderColor: getCSSVariable("--mobber-border-color"),
 });
 
 const getCSSVariable = variableName =>
@@ -9,5 +9,5 @@ const getCSSVariable = variableName =>
     .trim();
 
 module.exports = {
-  getTheme
+  getTheme,
 };

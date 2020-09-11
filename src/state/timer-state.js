@@ -51,7 +51,7 @@ class TimerState {
   dispatchTimerChange(secondsRemaining) {
     this.callback("timerChange", {
       secondsRemaining: secondsRemaining < 0 ? 0 : secondsRemaining,
-      secondsPerTurn: this.secondsPerTurn
+      secondsPerTurn: this.secondsPerTurn,
     });
   }
 
@@ -189,7 +189,7 @@ class TimerState {
       alertSound: this.alertSound,
       alertSoundTimes: this.alertSoundTimes,
       timerAlwaysOnTop: this.timerAlwaysOnTop,
-      shuffleMobbersOnStartup: this.shuffleMobbersOnStartup
+      shuffleMobbersOnStartup: this.shuffleMobbersOnStartup,
     };
   }
 

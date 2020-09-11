@@ -29,7 +29,7 @@ class Mobbers {
 
     return {
       current: active[this.currentMobber],
-      next: active[(this.currentMobber + 1) % active.length]
+      next: active[(this.currentMobber + 1) % active.length],
     };
   }
 

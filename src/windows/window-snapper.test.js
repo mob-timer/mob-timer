@@ -16,7 +16,7 @@ describe("window-snapper snapCheck", () => {
       x: 11,
       y: 11,
       width: 200 - 11 - 11,
-      height: 200 - 11 - 11
+      height: 200 - 11 - 11,
     };
     const screenBounds = { x: 0, y: 0, width: 200, height: 200 };
     const snapThreshold = 10;
@@ -26,7 +26,7 @@ describe("window-snapper snapCheck", () => {
       y: 11,
       width: 178,
       height: 178,
-      shouldSnap: false
+      shouldSnap: false,
     });
   });
 
@@ -40,7 +40,7 @@ describe("window-snapper snapCheck", () => {
       y: 11,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -54,7 +54,7 @@ describe("window-snapper snapCheck", () => {
       y: 0,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -68,7 +68,7 @@ describe("window-snapper snapCheck", () => {
       y: 0,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -82,7 +82,7 @@ describe("window-snapper snapCheck", () => {
       y: 0,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -96,7 +96,7 @@ describe("window-snapper snapCheck", () => {
       y: 13,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -110,7 +110,7 @@ describe("window-snapper snapCheck", () => {
       y: 990,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -124,7 +124,7 @@ describe("window-snapper snapCheck", () => {
       y: 990,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 
@@ -138,7 +138,7 @@ describe("window-snapper snapCheck", () => {
       y: 990,
       width: 220,
       height: 90,
-      shouldSnap: true
+      shouldSnap: true,
     });
   });
 });

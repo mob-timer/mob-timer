@@ -27,7 +27,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -56,7 +56,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
   });
@@ -81,7 +81,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 599,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -141,12 +141,12 @@ describe("timer-state", () => {
 
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "B",
-        nextName: "C"
+        nextName: "C",
       };
       expect(actual).toEqual(expectations);
     });
@@ -155,7 +155,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -165,12 +165,12 @@ describe("timer-state", () => {
       var event = assertEvent("rotated");
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "C",
-        nextName: "A"
+        nextName: "A",
       };
       expect(actual).toEqual(expectations);
     });
@@ -223,12 +223,12 @@ describe("timer-state", () => {
       var event = assertEvent("rotated");
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "A",
-        nextName: "A"
+        nextName: "A",
       };
       expect(actual).toEqual(expectations);
     });
@@ -254,12 +254,12 @@ describe("timer-state", () => {
       var event = assertEvent("rotated");
       const actual = {
         currentName: event.data.current.name,
-        nextName: event.data.next.name
+        nextName: event.data.next.name,
       };
 
       const expectations = {
         currentName: "A",
-        nextName: "C"
+        nextName: "C",
       };
       expect(actual).toEqual(expectations);
     });
@@ -324,7 +324,7 @@ describe("timer-state", () => {
       var timerChangeEvent = assertEvent("timerChange");
       expect(timerChangeEvent.data).toEqual({
         secondsRemaining: 600,
-        secondsPerTurn: 600
+        secondsPerTurn: 600,
       });
     });
 
@@ -381,7 +381,7 @@ describe("timer-state", () => {
       var event = assertEvent("timerChange");
       expect(event.data).toEqual({
         secondsRemaining: 300,
-        secondsPerTurn: 300
+        secondsPerTurn: 300,
       });
     });
   });
@@ -558,7 +558,7 @@ describe("timer-state", () => {
           alertSound: "bell.mp3",
           alertSoundTimes: [2, 3, 5, 8],
           timerAlwaysOnTop: false,
-          shuffleMobbersOnStartup: true
+          shuffleMobbersOnStartup: true,
         };
 
         timerState.loadState(state);
@@ -621,7 +621,7 @@ describe("timer-state", () => {
     describe("when loading state with one mobber", () => {
       beforeAll(() => {
         state = {
-          mobbers: [{ name: "jack" }]
+          mobbers: [{ name: "jack" }],
         };
 
         timerState.loadState(state);

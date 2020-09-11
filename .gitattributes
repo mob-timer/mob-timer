@@ -8,12 +8,12 @@
 # The above will handle all files NOT found below
 #
 
-# Documents
+# DOCUMENTS
 *.pdf  diff=astextplain
 *.PDF	 diff=astextplain
 *.md text
 
-# Graphics
+# GRAPHICS
 *.png binary
 *.jpg binary
 *.jpeg binary

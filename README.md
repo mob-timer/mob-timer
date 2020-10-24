@@ -23,7 +23,10 @@ You can either build the mob-timer from source or [download a pre-built version]
 
 ## Build mob-timer
 
+_Prerequisites:_ [Node.js](https://nodejs.org/) with the version specified in [`.nvmrc`](./.nvmrc), installed either manually or by using [nvm](https://github.com/nvm-sh/nvm)/[nvm-windows](https://github.com/coreybutler/nvm-windows)
+
 Run `npm ci` and then one of the following commands for your respective operating system:
+
 - Windows: `npm run build-win`
 - Mac OS X: `npm run build-mac`
 - Linux: `npm run build-linux` (You may need to install `libcanberra-gtk-module`)
@@ -31,12 +34,10 @@ Run `npm ci` and then one of the following commands for your respective operatin
 Platform specific packages will be placed in the `dist` directory.
 If you need a platform other than these, you will need to modify the build script in the `package.json` file.
 
-
 # Development
 
 Run `npm ci` to get the dependencies, then `npm start` to run the timer.
 Run `npm test` to run the unit tests once, or alternatively `npm run watch` to run them on changes. [More information on test structure.](./test/README.md)
-
 
 # Contributing
 
@@ -47,7 +48,7 @@ If you are uncertain, please reach out first (by opening an issue) before invest
 # Reasons for forking
 
 _This is a fork from [pluralsight/mob-timer](https://github.com/pluralsight/mob-timer), please have a look to see if that project is more suited to your needs!_ 🙂
- 
+
 There are a few main reasons for this fork existing:
 
 - To build in CI and attach to release using [Travis CI](https://travis-ci.org/)

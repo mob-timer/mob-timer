@@ -64,7 +64,7 @@
     "@babel/core": "^7.12.3",
     "coveralls": "^3.1.0",
     "cross-zip-cli": "^1.0.0",
-    "electron": "^10.1.5",
+    "electron": "^10.2.0",
     "electron-packager": "^15.1.0",
     "electron-releases": "^3.523.0",
     "eslint": "^7.12.0",
